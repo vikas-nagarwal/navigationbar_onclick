@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Kalnia+Glaze:100,200,300,regular,500,600,700"
+      rel="stylesheet"
+    />
+    <title>Navigation Menu</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: auto;
+        padding: auto;
+        height: auto;
+        width: auto;
+      }
+      ul li:hover {
+        color: greenyellow;
+      }
+      li {
+        color: rgb(7, 5, 5);
+      }
+      .nav {
+        background-color: rgb(219, 132, 17);
+        width: 100%;
+        height: 60px; /* Changed to 60px for a more reasonable height */
+      }
+      .homemenu {
+        left: -71px;
+        position: relative;
+        float: right;
+        display: inline-flex;
+        margin: 0;
+        padding: 0;
+      }
+      .homemenu li {
+        float: right;
+        margin-left: 17px;
+        margin-top: 11px;
+        padding: 10px;
+        list-style-type: none;
+        position: relative;
+      }
+      .ser:hover .services {
+        display: block;
+      }
+      .services {
+        display: none;
+        position: absolute; /* Added for dropdown positioning */
+        top: 30px; /* Adjust based on the height of the main list items */
+        left: 0;
+        background-color: rgb(219, 132, 17);
+        padding: 0;
+      }
+      .services li {
+        /* padding: 10px; */
+      }
+      .village {
+        position: absolute; /* Added for dropdown positioning */
+        top: 10px; /* Adjust based on the height of the main list items */
+        left: 75px;
+        background-color: rgb(219, 132, 17);
+        padding: 0;
+        display: none;
+      }
+
+      .vil:hover .village {
+        display: block;
+      }
+      .ser .services li {
+        /* padding: 5px; */
+        left: -10px;
+      }
+      .vil .village li {
+        padding: 5px;
+        left: -10px;
+      }
+      .icon {
+        display: none;
+      }
+      @media screen and (max-width: 600px) {
+        .homemenu li {
+          display: none;
+        }
+        .vil:hover .village {
+          display: none;
+        }
+        .ser {
+          cursor: pointer;
+        }
+        .ser:hover .services {
+          display: none;
+        }
+        .icon {
+          margin-left: 26px;
+          position: absolute;
+          display: block;
+          position: relative;
+          margin-top: 20px;
+          float: right;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        .homemenu.responsive li {
+          display: block;
+          /* position: relative; */
+          /* margin-left: -353px; */
+        }
+        .homemenu.responsive {
+          position: relative;
+          display: block;
+        }
+        .homemenu.responsive li {
+          float: none;
+        }
+        .ser.responsive .services {
+          display: block;
+        }
+        .services {
+          position: relative;
+        }
+        .village {
+          position: relative;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <img src="" alt="Logo" />
+      <a
+        href="javascript:void(0);"
+        style="font-size: 15px"
+        class="icon"
+        onclick="myFunction()"
+        >&#9776;</a
+      >
+      <ul id="myTopnav" class="homemenu">
+        <li><a class="active">Home</a></li>
+        <li>About</li>
+        <li class="ser" onclick="dc()" id="dcc">
+          Service
+          <ul class="services">
+            <li>PetGFog</li>
+            <li>Hot Dog</li>
+
+            <li class="vil" onclick="toggleVillageList()" id="fdfdf">
+              Village Dog
+              <ul class="village">
+                <li>PetGFog</li>
+                <li>Hot Dog</li>
+                <li>Village Dog</li>
+              </ul>
+            </li>
+            <li>Other Dog</li>
+          </ul>
+        </li>
+        <li>Career</li>
+        <li>Blog</li>
+      </ul>
+    </nav>
+
+    <script>
+      function myFunction() {
+        var toggle = document.getElementById("myTopnav");
+        if (toggle.className === "homemenu") {
+          toggle.className += " responsive";
+        } else {
+          toggle.className = "homemenu";
+        }
+      }
+
+      function dc() {
+        var drop = document.getElementById("dcc");
+        if (drop.className === "ser") {
+          drop.className += " responsive";
+        } else {
+          drop.className = "ser";
+        }
+      }
+
+      function toggleVillageList() {
+        var villageList = document.querySelector("#fdfdf .village");
+        if (
+          villageList.style.display === "block" ||
+          villageList.style.display === ""
+        ) {
+          villageList.style.display = "none";
+        } else {
+          villageList.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
